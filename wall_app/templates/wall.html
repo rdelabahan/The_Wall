@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wall</title>
+    {% load static %}
+    <link rel='stylesheet' href='{% static "css/wall_style.css" %}'>
+</head>
+<body>
+    <div id='top'>
+        <h1>CodingDojo Wall</h1>
+        <h2 id='wc'>Welcome {{request.session.user_first_name}} {{request.session.user_last_name}}</h2>
+        <a id='logoff' href='/logout'>Log off</a>
+    </div>
+    <hr>
+    <form action='/wall/post_message' method='POST'>
+    {% csrf_token %}
+        <h2 id='m1'>Post a message</h2>
+        <textarea id="message" name="message" rows="8" cols="100" placeholder='Enter message here..'></textarea>
+        <input id='sub_message' type='submit' value='Post a message'>
+    </form>
+    {% for post in wall_messages %}
+    <div id='post'>
+        <h3><a href='/wall/user_profile/{{post.poster.id}}'>{{post.poster.first_name}} {{post.poster.last_name}}</a> - {{post.created_at}}</h3>
+        <p>{{post.message}}</p>
+        <a id='like_post' href='/wall/like/{{post.id}}'>Like post</a>
+        <p>{{post.user_likes.count}}</p>
+        {% for comment in post.post_comments.all %}
+        <div id='inner_post'>
+            <h4><a href='/wall/user_profile/{{post.poster.id}}'>{{comment.poster.first_name}} {{comment.poster.last_name}}</a> {{comment.poster.created_at}}</h4>
+            <p>{{comment.comment}}</p>
+            <p id='del_comment'><a href='/wall/delete/{{comment.id}}'>Delete</a></p>
+            {% endfor %}
+            <form action ='/wall/add_comment/{{post.id}}' method='POST'>
+            {% csrf_token %}
+                <h4 id='c1'>Post a comment</h4>
+                <textarea id='comment' name='comment' rows="4" cols="50" placeholder='Enter comment here..'></textarea>
+                <input id='sub_comment' type='submit' value='Post a comment'>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    
+</body>
+</html>

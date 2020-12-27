@@ -1,0 +1,72 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#top {
+    display: flex;
+    margin-top: 15px;
+    padding-left: 25px;
+}
+
+#wc {
+    margin-left: 600px;
+    margin-top: 10px;
+}
+
+#logoff {
+    margin-top: 15px;
+    margin-left: 80px;
+}
+
+hr {
+    margin-top: 15px;
+}
+
+#m1 {
+    margin-top: 25px;
+    margin-left: 25px;
+}
+
+#message {
+    margin-left: 25px;
+    margin-top: 25px;
+}
+
+#sub_message {
+    display: block;
+    margin-left: 650px;
+    margin-top: 5px;
+}
+
+#post {
+    margin-left: 25px;
+    margin-top: 25px;
+}
+
+p {
+    margin-top: 10px;
+}
+
+#inner_post {
+    margin-left: 39px;
+    margin-top: 10px;
+}
+
+#c1 {
+    margin-top: 15px;
+}
+
+#sub_comment {
+    display: block;
+    margin-left: 270px;
+}
+
+#del_comment {
+    margin-top: 5px;
+}
+
+#like_post {
+    margin-top: 5px;
+    display: block;
+}
